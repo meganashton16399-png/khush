@@ -6,37 +6,34 @@ function saveCart(cart) {
   localStorage.setItem("cart", JSON.stringify(cart));
 }
 
-function addToCart(productId) {
+function updateCartCount() {
+  const el = document.getElementById("cart-count");
+  if (el) el.innerText = getCart().length;
+}
+
+function addToCart(id) {
   const cart = getCart();
-  cart.push(productId);
+  cart.push(id);
   saveCart(cart);
   updateCartCount();
   alert("Added to cart");
 }
 
-function updateCartCount() {
-  const cart = getCart();
-  const el = document.getElementById("cart-count");
-  if (el) el.innerText = cart.length;
-}
-
 function loadProductPage() {
-  const params = new URLSearchParams(window.location.search);
-  const id = params.get("id");
-  const product = PRODUCTS[id];
+  const id = new URLSearchParams(window.location.search).get("id");
+  const p = PRODUCTS[id];
+  if (!p) return;
 
-  if (!product) return;
+  document.getElementById("p-img").src = p.image;
+  document.getElementById("p-name").innerText = p.name;
+  document.getElementById("p-price").innerText = "₹" + p.price;
+  document.getElementById("p-desc").innerText = p.description;
 
-  document.getElementById("p-img").src = product.image;
-  document.getElementById("p-name").innerText = product.name;
-  document.getElementById("p-price").innerText = "₹" + product.price;
-  document.getElementById("p-desc").innerText = product.description;
-
-  const washList = document.getElementById("wash-care");
-  product.washCare.forEach(step => {
+  const list = document.getElementById("wash-care");
+  p.washCare.forEach(step => {
     const li = document.createElement("li");
     li.innerText = step;
-    washList.appendChild(li);
+    list.appendChild(li);
   });
 
   document
@@ -46,8 +43,8 @@ function loadProductPage() {
 
 function loadCartPage() {
   const cart = getCart();
-  const list = document.getElementById("cart-items");
   let subtotal = 0;
+  const wrap = document.getElementById("cart-items");
 
   cart.forEach(id => {
     const p = PRODUCTS[id];
@@ -62,11 +59,23 @@ function loadCartPage() {
         <p>₹${p.price}</p>
       </div>
     `;
-    list.appendChild(div);
+    wrap.appendChild(div);
   });
 
   document.getElementById("subtotal").innerText = "₹" + subtotal;
   document.getElementById("total").innerText = "₹" + (subtotal + 100);
+}
+
+function goBack() {
+  window.history.back();
+}
+
+function openSearch() {
+  document.getElementById("searchOverlay").style.display = "flex";
+}
+
+function closeSearch() {
+  document.getElementById("searchOverlay").style.display = "none";
 }
 
 document.addEventListener("DOMContentLoaded", updateCartCount);
