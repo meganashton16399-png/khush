@@ -1,61 +1,44 @@
 let products = {
-  1: {
-    name: "Frog Knit Scarf 🐸",
-    price: 800,
-    img: "assets/frog-scarf.jpg",
-    desc: "Handmade acrylic yarn scarf. Free size. Aesthetic accessory. Hand wash only."
-  },
-  2: {
-    name: "Floral Crochet Hairband",
-    price: 299,
-    img: "assets/hairband.jpg",
-    desc: "Stretchable handmade crochet hairband. One size fits all. Everyday wear."
-  }
+  1: { name:"Frog Knit Scarf 🐸", price:800 },
+  2: { name:"Floral Crochet Hairband", price:299 }
 };
 
 let cart = [];
-let currentProduct = null;
+let current;
 
-function openProduct(id) {
-  currentProduct = products[id];
-  document.getElementById("modalImg").src = currentProduct.img;
-  document.getElementById("modalTitle").innerText = currentProduct.name;
-  document.getElementById("modalPrice").innerText = "₹" + currentProduct.price;
-  document.getElementById("modalDesc").innerText = currentProduct.desc;
-  document.getElementById("productModal").style.display = "flex";
+function openProduct(id){
+  current = products[id];
+  document.getElementById("pName").innerText = current.name;
+  document.getElementById("pPrice").innerText = "₹" + current.price;
+  document.getElementById("pDesc").innerText = "Handmade acrylic yarn product.";
+  document.getElementById("productModal").style.display="flex";
 }
 
-function closeProduct() {
-  document.getElementById("productModal").style.display = "none";
+function closeProduct(){
+  document.getElementById("productModal").style.display="none";
 }
 
-function zoomImage() {
-  window.open(currentProduct.img, "_blank");
-}
-
-function addToCart() {
-  cart.push(currentProduct);
+function addToCart(){
+  cart.push(current);
   document.getElementById("cart-count").innerText = cart.length;
   closeProduct();
 }
 
-function goToCheckout() {
-  if (cart.length === 0) return alert("Cart is empty");
-  document.getElementById("checkout").classList.remove("hidden");
-
-  let html = "";
-  let total = 0;
-
-  cart.forEach(p => {
-    html += `<p>${p.name} - ₹${p.price}</p>`;
-    total += p.price;
-  });
-
-  document.getElementById("checkout-items").innerHTML = html;
-  document.getElementById("totalAmount").innerText =
-    "Total: ₹" + (total + 100);
+function openCart(){
+  document.getElementById("cartDrawer").classList.add("open");
+  renderCart();
 }
 
-function fakePay() {
-  alert("Fake payment successful 💗\nReal gateway coming soon.");
+function closeCart(){
+  document.getElementById("cartDrawer").classList.remove("open");
+}
+
+function renderCart(){
+  let html="", total=0;
+  cart.forEach(p=>{
+    html+=`<p>${p.name} – ₹${p.price}</p>`;
+    total+=p.price;
+  });
+  document.getElementById("cartItems").innerHTML = html || "No products in cart.";
+  document.getElementById("cartTotal").innerText = "Total: ₹"+(total+100);
 }
