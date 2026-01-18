@@ -1,29 +1,62 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Inter", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, Inter, sans-serif;
   background: #faf7f2;
   color: #2f2f2f;
 }
 
-header {
+/* TOP BAR */
+.topbar {
   display: flex;
   justify-content: space-between;
-  padding: 16px;
+  align-items: center;
+  padding: 14px 16px;
   background: #fff;
+  border-bottom: 1px solid #eee;
   position: sticky;
   top: 0;
-  border-bottom: 1px solid #eee;
+  z-index: 10;
 }
 
-.brand {
-  font-size: 22px;
-  font-weight: 600;
-}
-
-.cart-icon {
+.icon-btn {
+  background: none;
+  border: none;
   font-size: 18px;
 }
 
+.brand-name {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+/* SEARCH */
+.search-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.4);
+  display: none;
+  justify-content: center;
+  padding-top: 80px;
+  z-index: 20;
+}
+
+.search-box {
+  background: #fff;
+  width: 90%;
+  max-width: 420px;
+  padding: 16px;
+  border-radius: 12px;
+}
+
+.search-box input {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+}
+
+/* HOME */
 .products {
   padding: 16px;
   display: grid;
@@ -34,6 +67,8 @@ header {
   background: #fff;
   border-radius: 16px;
   overflow: hidden;
+  text-decoration: none;
+  color: inherit;
 }
 
 .product-card img {
@@ -44,33 +79,39 @@ header {
   padding: 12px;
 }
 
-.product-card h3 {
-  margin: 0;
+.price {
+  font-weight: 600;
 }
 
-.price {
-  margin-top: 6px;
-  font-weight: 600;
+/* PRODUCT PAGE */
+.product-page {
+  padding: 16px;
+  display: grid;
+  gap: 18px;
 }
 
 .product-page img {
   width: 100%;
+  max-height: 420px;
+  object-fit: cover;
+  border-radius: 14px;
 }
 
 .section {
-  padding: 16px;
+  display: grid;
+  gap: 8px;
 }
 
 button {
-  width: 100%;
   padding: 14px;
-  background: #2f2f2f;
-  color: #fff;
   border: none;
   border-radius: 10px;
+  background: #2f2f2f;
+  color: white;
   font-size: 16px;
 }
 
+/* CART */
 .cart-item {
   display: flex;
   gap: 12px;
@@ -83,6 +124,7 @@ button {
   border-radius: 10px;
 }
 
+/* FOOTER */
 footer {
   padding: 24px;
   background: #111;
