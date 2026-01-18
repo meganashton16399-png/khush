@@ -12,45 +12,60 @@
   <h1 class="logo">Crocket Bhawan</h1>
   <nav>
     <a href="#shop">Shop</a>
-    <a href="https://instagram.com/coquette.bhawan" target="_blank">Instagram</a>
-    <a href="#footer">Contact</a>
+    <a class="insta-btn" href="https://instagram.com/coquette.bhawan" target="_blank">
+      Instagram
+    </a>
+    <div class="cart">
+      🛒 <span id="cart-count">0</span>
+    </div>
   </nav>
 </header>
 
-<section class="hero">
+<section class="hero fade-in">
   <h2>Handmade yarn pieces for soft days & softer moods.</h2>
 </section>
 
-<section id="shop" class="products">
+<section id="shop" class="products fade-in">
 
   <div class="product-card">
-    <img src="assets/frog-scarf.jpg" alt="Frog Knit Scarf">
+    <div class="img-wrap">
+      <img src="assets/frog-scarf.jpg" alt="Frog Knit Scarf">
+    </div>
     <h3>Frog Knit Scarf 🐸</h3>
     <p class="price">₹800</p>
     <p class="desc">
-      Handmade aesthetic scarf crafted with soft acrylic yarn. Lightweight, playful,
-      and designed to stand out while staying cozy.
+      Handmade acrylic yarn scarf with playful frog detailing.
+      Lightweight, cozy, and purely aesthetic.
     </p>
-    <button>Add to Cart</button>
+    <button onclick="addToCart()">Add to Cart</button>
   </div>
 
   <div class="product-card">
-    <img src="assets/hairband.jpg" alt="Floral Crochet Hairband">
+    <div class="img-wrap">
+      <img src="assets/hairband.jpg" alt="Floral Crochet Hairband">
+    </div>
     <h3>Floral Crochet Hairband</h3>
     <p class="price">₹299</p>
     <p class="desc">
-      Stretchable handmade crochet hairband for everyday wear. Soft, comfortable,
-      and effortlessly cute.
+      Stretchable handmade crochet hairband for everyday wear.
+      Soft, comfy, and effortlessly cute.
     </p>
-    <button>Add to Cart</button>
+    <button onclick="addToCart()">Add to Cart</button>
   </div>
 
 </section>
 
-<footer id="footer">
+<section id="contact" class="contact fade-in">
+  <h3>Contact</h3>
+  <p>Have questions or custom requests?</p>
+  <p id="contact-info">Contact details coming here</p>
+</section>
+
+<footer>
   <p>© 2026 Crocket Bhawan</p>
   <p>Handmade · PAN India Shipping · Dispatch in 1–2 days</p>
 </footer>
 
+<script src="script.js"></script>
 </body>
 </html>
