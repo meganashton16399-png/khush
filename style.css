@@ -1,99 +1,91 @@
 body {
   margin: 0;
-  font-family: Inter, sans-serif;
-  background: #f6dfe7;
-  color: #3a2e2a;
+  font-family: -apple-system, BlinkMacSystemFont, "Inter", sans-serif;
+  background: #faf7f2;
+  color: #2f2f2f;
 }
 
-.navbar {
-  position: sticky;
-  top: 0;
-  background: #fff8f1;
-  padding: 15px 30px;
+header {
   display: flex;
   justify-content: space-between;
-  z-index: 10;
+  padding: 16px;
+  background: #fff;
+  position: sticky;
+  top: 0;
+  border-bottom: 1px solid #eee;
+}
+
+.brand {
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.cart-icon {
+  font-size: 18px;
 }
 
 .products {
+  padding: 16px;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
-  gap: 30px;
-  padding: 40px;
+  gap: 20px;
 }
 
 .product-card {
   background: #fff;
-  padding: 15px;
   border-radius: 16px;
-  cursor: pointer;
+  overflow: hidden;
 }
 
 .product-card img {
   width: 100%;
-  border-radius: 12px;
 }
 
-/* PRODUCT MODAL */
-.product-modal {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,.6);
-  display: none;
-  justify-content: center;
-  align-items: center;
+.product-card div {
+  padding: 12px;
 }
 
-.product-box {
-  background: #fff8f1;
-  padding: 20px;
-  border-radius: 18px;
-  max-width: 400px;
-  width: 90%;
+.product-card h3 {
+  margin: 0;
 }
 
-.product-box img {
+.price {
+  margin-top: 6px;
+  font-weight: 600;
+}
+
+.product-page img {
   width: 100%;
-  border-radius: 12px;
 }
 
-/* CART DRAWER */
-.cart-drawer {
-  position: fixed;
-  top: 0;
-  right: -100%;
-  width: 320px;
-  height: 100%;
-  background: #fff;
-  box-shadow: -10px 0 30px rgba(0,0,0,.2);
-  transition: right .4s ease;
-  z-index: 20;
+.section {
+  padding: 16px;
 }
 
-.cart-drawer.open {
-  right: 0;
+button {
+  width: 100%;
+  padding: 14px;
+  background: #2f2f2f;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
 }
 
-.cart-header {
+.cart-item {
   display: flex;
-  justify-content: space-between;
-  padding: 15px;
-  border-bottom: 1px solid #ddd;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid #eee;
 }
 
-.cart-footer {
-  padding: 15px;
-  border-top: 1px solid #ddd;
+.cart-item img {
+  width: 70px;
+  border-radius: 10px;
 }
 
 footer {
+  padding: 24px;
   background: #111;
-  color: #eee;
-  padding: 40px;
-}
-
-.footer-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
-  gap: 30px;
+  color: #ddd;
+  font-size: 14px;
 }
