@@ -1,44 +1,72 @@
-let products = {
-  1: { name:"Frog Knit Scarf 🐸", price:800 },
-  2: { name:"Floral Crochet Hairband", price:299 }
-};
-
-let cart = [];
-let current;
-
-function openProduct(id){
-  current = products[id];
-  document.getElementById("pName").innerText = current.name;
-  document.getElementById("pPrice").innerText = "₹" + current.price;
-  document.getElementById("pDesc").innerText = "Handmade acrylic yarn product.";
-  document.getElementById("productModal").style.display="flex";
+function getCart() {
+  return JSON.parse(localStorage.getItem("cart")) || [];
 }
 
-function closeProduct(){
-  document.getElementById("productModal").style.display="none";
+function saveCart(cart) {
+  localStorage.setItem("cart", JSON.stringify(cart));
 }
 
-function addToCart(){
-  cart.push(current);
-  document.getElementById("cart-count").innerText = cart.length;
-  closeProduct();
+function addToCart(productId) {
+  const cart = getCart();
+  cart.push(productId);
+  saveCart(cart);
+  updateCartCount();
+  alert("Added to cart");
 }
 
-function openCart(){
-  document.getElementById("cartDrawer").classList.add("open");
-  renderCart();
+function updateCartCount() {
+  const cart = getCart();
+  const el = document.getElementById("cart-count");
+  if (el) el.innerText = cart.length;
 }
 
-function closeCart(){
-  document.getElementById("cartDrawer").classList.remove("open");
-}
+function loadProductPage() {
+  const params = new URLSearchParams(window.location.search);
+  const id = params.get("id");
+  const product = PRODUCTS[id];
 
-function renderCart(){
-  let html="", total=0;
-  cart.forEach(p=>{
-    html+=`<p>${p.name} – ₹${p.price}</p>`;
-    total+=p.price;
+  if (!product) return;
+
+  document.getElementById("p-img").src = product.image;
+  document.getElementById("p-name").innerText = product.name;
+  document.getElementById("p-price").innerText = "₹" + product.price;
+  document.getElementById("p-desc").innerText = product.description;
+
+  const washList = document.getElementById("wash-care");
+  product.washCare.forEach(step => {
+    const li = document.createElement("li");
+    li.innerText = step;
+    washList.appendChild(li);
   });
-  document.getElementById("cartItems").innerHTML = html || "No products in cart.";
-  document.getElementById("cartTotal").innerText = "Total: ₹"+(total+100);
+
+  document
+    .getElementById("add-cart-btn")
+    .addEventListener("click", () => addToCart(id));
 }
+
+function loadCartPage() {
+  const cart = getCart();
+  const list = document.getElementById("cart-items");
+  let subtotal = 0;
+
+  cart.forEach(id => {
+    const p = PRODUCTS[id];
+    subtotal += p.price;
+
+    const div = document.createElement("div");
+    div.className = "cart-item";
+    div.innerHTML = `
+      <img src="${p.image}">
+      <div>
+        <h4>${p.name}</h4>
+        <p>₹${p.price}</p>
+      </div>
+    `;
+    list.appendChild(div);
+  });
+
+  document.getElementById("subtotal").innerText = "₹" + subtotal;
+  document.getElementById("total").innerText = "₹" + (subtotal + 100);
+}
+
+document.addEventListener("DOMContentLoaded", updateCartCount);
