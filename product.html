@@ -10,6 +10,7 @@
 
 <body onload="loadProductPage()">
 
+<!-- TOP BAR -->
 <div class="topbar">
   <button class="icon-btn" onclick="goBack()">←</button>
   <div class="brand-name">Crocket Bhawan</div>
@@ -19,14 +20,18 @@
   </div>
 </div>
 
+<!-- SEARCH -->
 <div id="searchOverlay" class="search-overlay" onclick="closeSearch()">
   <div class="search-box" onclick="event.stopPropagation()">
-    <input placeholder="Search products">
+    <input placeholder="Search products…">
   </div>
 </div>
 
 <div class="product-page">
-  <img id="p-img">
+
+  <div class="product-media">
+    <img id="p-img">
+  </div>
 
   <div class="section">
     <h2 id="p-name"></h2>
@@ -45,11 +50,14 @@
   </div>
 
   <div class="section">
-    <h4>Contact</h4>
-    <a href="https://instagram.com/coquette.bhawan">Instagram</a>
-    <a href="https://wa.me/918770889047">WhatsApp</a>
-    <a href="mailto:khooshzzz@gmail.com">Email</a>
+    <h4>Need help?</h4>
+    <div class="contact-grid">
+      <a class="contact-btn" href="https://instagram.com/coquette.bhawan">Instagram</a>
+      <a class="contact-btn" href="https://wa.me/918770889047">WhatsApp</a>
+      <a class="contact-btn" href="mailto:khooshzzz@gmail.com">Email</a>
+    </div>
   </div>
+
 </div>
 
 </body>
