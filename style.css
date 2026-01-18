@@ -1,101 +1,185 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+
+:root {
+  --bg-main: #f6dfe7;       /* blush pink */
+  --card-bg: #fff8f1;      /* creamy */
+  --accent: #7c8f7a;       /* sage green */
+  --accent-2: #9b7aa8;     /* muted lilac */
+  --dark: #3a2e2a;         /* cocoa */
+  --button: #4a2c3a;       /* plum */
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Inter', sans-serif;
 }
 
 body {
-  background: #faf7f2;
-  color: #2c2c2c;
+  background: linear-gradient(180deg, var(--bg-main), #fbeff3);
+  color: var(--dark);
 }
 
+/* HEADER */
 .navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
   display: flex;
   justify-content: space-between;
-  padding: 20px 40px;
-  background: #fff;
-  border-bottom: 1px solid #eee;
+  align-items: center;
+  padding: 18px 40px;
+  background: rgba(255, 248, 241, 0.85);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(0,0,0,0.05);
 }
 
 .logo {
   font-size: 22px;
   font-weight: 600;
+  color: var(--dark);
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }
 
 nav a {
-  margin-left: 20px;
   text-decoration: none;
-  color: #333;
+  color: var(--dark);
   font-weight: 500;
 }
 
+.insta-btn {
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #9b7aa8, #7c8f7a);
+  color: #fff;
+  font-size: 14px;
+}
+
+.cart {
+  font-weight: 500;
+}
+
+/* HERO */
 .hero {
-  padding: 80px 20px;
+  padding: 100px 20px;
   text-align: center;
 }
 
 .hero h2 {
-  font-size: 28px;
-  max-width: 700px;
+  font-size: 32px;
+  max-width: 720px;
   margin: auto;
   line-height: 1.4;
+  color: var(--dark);
 }
 
+/* PRODUCTS */
 .products {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 30px;
-  padding: 60px 40px;
+  gap: 40px;
+  padding: 70px 40px;
 }
 
 .product-card {
-  background: #fff;
+  background: var(--card-bg);
+  border-radius: 22px;
   padding: 20px;
-  border-radius: 14px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.05);
   text-align: center;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
 }
 
-.product-card img {
+.product-card:hover {
+  transform: translateY(-8px) scale(1.01);
+  box-shadow: 0 25px 60px rgba(0,0,0,0.12);
+}
+
+.img-wrap {
+  overflow: hidden;
+  border-radius: 18px;
+  margin-bottom: 10px;
+}
+
+.img-wrap img {
   width: 100%;
-  border-radius: 12px;
-  margin-bottom: 15px;
+  transition: transform 0.45s ease;
+}
+
+.product-card:hover img {
+  transform: scale(1.1);
 }
 
 .product-card h3 {
-  font-size: 18px;
-  margin-bottom: 5px;
+  margin-top: 8px;
 }
 
 .price {
   font-weight: 600;
-  margin-bottom: 10px;
+  margin: 6px 0;
+  color: var(--accent-2);
 }
 
 .desc {
   font-size: 14px;
   opacity: 0.8;
-  margin-bottom: 15px;
+  margin-bottom: 16px;
 }
 
+/* BUTTON */
 button {
-  padding: 10px 20px;
+  padding: 12px 26px;
   border: none;
-  background: #2c2c2c;
+  background: linear-gradient(135deg, var(--button), #6b3e54);
   color: #fff;
-  border-radius: 8px;
+  border-radius: 999px;
   cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 button:hover {
-  opacity: 0.9;
+  transform: scale(1.07);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
 }
 
+/* CONTACT */
+.contact {
+  text-align: center;
+  padding: 70px 20px;
+  background: linear-gradient(180deg, #fbeff3, #f6dfe7);
+}
+
+.contact h3 {
+  font-size: 24px;
+  margin-bottom: 12px;
+}
+
+/* FOOTER */
 footer {
   text-align: center;
-  padding: 30px;
-  background: #fff;
-  border-top: 1px solid #eee;
+  padding: 35px;
+  background: rgba(255,248,241,0.9);
+  border-top: 1px solid rgba(0,0,0,0.05);
   font-size: 14px;
+}
+
+/* FADE IN */
+.fade-in {
+  animation: fadeUp 0.9s ease both;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
