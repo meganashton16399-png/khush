@@ -30,6 +30,7 @@ function loadProductPage() {
   document.getElementById("p-desc").innerText = p.description;
 
   const list = document.getElementById("wash-care");
+  list.innerHTML = "";
   p.washCare.forEach(step => {
     const li = document.createElement("li");
     li.innerText = step;
@@ -43,8 +44,9 @@ function loadProductPage() {
 
 function loadCartPage() {
   const cart = getCart();
-  let subtotal = 0;
   const wrap = document.getElementById("cart-items");
+  wrap.innerHTML = "";
+  let subtotal = 0;
 
   cart.forEach(id => {
     const p = PRODUCTS[id];
@@ -67,7 +69,7 @@ function loadCartPage() {
 }
 
 function goBack() {
-  window.history.back();
+  history.back();
 }
 
 function openSearch() {
