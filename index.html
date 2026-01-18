@@ -12,10 +12,8 @@
   <h1 class="logo">Crocket Bhawan</h1>
   <nav>
     <a href="#shop">Shop</a>
-    <a class="insta-btn" href="https://instagram.com/coquette.bhawan" target="_blank">
-      Instagram
-    </a>
-    <div class="cart">
+    <a class="insta-btn" href="https://instagram.com/coquette.bhawan" target="_blank">Instagram</a>
+    <div class="cart" onclick="goToCheckout()">
       🛒 <span id="cart-count">0</span>
     </div>
   </nav>
@@ -27,43 +25,53 @@
 
 <section id="shop" class="products fade-in">
 
-  <div class="product-card">
+  <div class="product-card" onclick="openProduct(1)">
     <div class="img-wrap">
-      <img src="assets/frog-scarf.jpg" alt="Frog Knit Scarf">
+      <img src="assets/frog-scarf.jpg" />
     </div>
     <h3>Frog Knit Scarf 🐸</h3>
     <p class="price">₹800</p>
-    <p class="desc">
-      Handmade acrylic yarn scarf with playful frog detailing.
-      Lightweight, cozy, and purely aesthetic.
-    </p>
-    <button onclick="addToCart()">Add to Cart</button>
   </div>
 
-  <div class="product-card">
+  <div class="product-card" onclick="openProduct(2)">
     <div class="img-wrap">
-      <img src="assets/hairband.jpg" alt="Floral Crochet Hairband">
+      <img src="assets/hairband.jpg" />
     </div>
     <h3>Floral Crochet Hairband</h3>
     <p class="price">₹299</p>
-    <p class="desc">
-      Stretchable handmade crochet hairband for everyday wear.
-      Soft, comfy, and effortlessly cute.
-    </p>
-    <button onclick="addToCart()">Add to Cart</button>
   </div>
 
 </section>
 
-<section id="contact" class="contact fade-in">
-  <h3>Contact</h3>
-  <p>Have questions or custom requests?</p>
-  <p id="contact-info">Contact details coming here</p>
+<!-- PRODUCT MODAL -->
+<div id="productModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeProduct()">×</span>
+    <img id="modalImg" onclick="zoomImage()" />
+    <h3 id="modalTitle"></h3>
+    <p id="modalPrice"></p>
+    <p id="modalDesc"></p>
+    <button onclick="addToCart()">Add to Cart</button>
+  </div>
+</div>
+
+<!-- CHECKOUT -->
+<section id="checkout" class="checkout hidden fade-in">
+  <h2>Checkout</h2>
+  <div id="checkout-items"></div>
+  <p>Shipping: ₹100</p>
+  <h3 id="totalAmount"></h3>
+
+  <input placeholder="Full Name" />
+  <input placeholder="Address" />
+  <input placeholder="Phone Number" />
+
+  <button onclick="fakePay()">Proceed to Pay</button>
 </section>
 
 <footer>
   <p>© 2026 Crocket Bhawan</p>
-  <p>Handmade · PAN India Shipping · Dispatch in 1–2 days</p>
+  <p>PAN India Shipping · Dispatch in 1–2 Days</p>
 </footer>
 
 <script src="script.js"></script>
