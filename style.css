@@ -1,7 +1,6 @@
 :root {
   --bg: #f4efe9;
   --card: #fffdf9;
-  --accent: #8fa89a;
   --accent-soft: #dbe5df;
   --text: #2e2e2e;
   --cta: #2f2f2f;
@@ -17,8 +16,8 @@ body {
 /* TOP BAR */
 .topbar {
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
   padding: 14px 16px;
   background: var(--card);
   border-bottom: 1px solid #e6e0d8;
@@ -31,7 +30,6 @@ body {
   background: none;
   border: none;
   font-size: 18px;
-  cursor: pointer;
 }
 
 .brand-name {
@@ -39,7 +37,33 @@ body {
   font-weight: 600;
 }
 
-/* HOME GRID */
+/* SEARCH */
+.search-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  display: none;
+  justify-content: center;
+  padding-top: 80px;
+  z-index: 20;
+}
+
+.search-box {
+  background: var(--card);
+  width: 90%;
+  max-width: 420px;
+  padding: 16px;
+  border-radius: 16px;
+}
+
+.search-box input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid #ccc;
+}
+
+/* HOME GRID – 2 COLUMN */
 .products {
   padding: 16px;
   display: grid;
@@ -68,30 +92,22 @@ body {
 
 .price {
   font-weight: 600;
-  margin-top: 6px;
 }
 
-/* PRODUCT PAGE GRID */
+/* PRODUCT PAGE */
 .product-page {
   padding: 16px;
   display: grid;
   gap: 20px;
 }
 
-.product-media {
-  background: var(--card);
-  padding: 10px;
-  border-radius: 18px;
-}
-
 .product-media img {
   width: 100%;
   max-height: 360px;
   object-fit: cover;
-  border-radius: 14px;
+  border-radius: 16px;
 }
 
-/* INFO BLOCKS (NO MORE CHOPPY FEEL) */
 .section {
   background: var(--card);
   border-radius: 18px;
@@ -100,7 +116,6 @@ body {
   gap: 10px;
 }
 
-/* BUTTON */
 button {
   padding: 14px;
   border-radius: 14px;
@@ -110,7 +125,7 @@ button {
   font-size: 16px;
 }
 
-/* EMBEDDED CONTACT BUTTONS */
+/* CONTACT PILLS */
 .contact-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -122,7 +137,6 @@ button {
   border-radius: 999px;
   background: var(--accent-soft);
   text-align: center;
-  font-size: 14px;
   text-decoration: none;
   color: var(--text);
   font-weight: 500;
@@ -139,33 +153,6 @@ button {
 .cart-item img {
   width: 70px;
   border-radius: 12px;
-}
-
-/* SEARCH */
-.search-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.4);
-  display: none;
-  justify-content: center;
-  padding-top: 80px;
-  z-index: 20;
-}
-
-.search-box {
-  background: var(--card);
-  width: 90%;
-  max-width: 420px;
-  padding: 16px;
-  border-radius: 16px;
-}
-
-.search-box input {
-  width: 100%;
-  padding: 12px;
-  font-size: 16px;
-  border-radius: 12px;
-  border: 1px solid #ccc;
 }
 
 /* FOOTER */
