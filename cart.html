@@ -2,20 +2,22 @@
 <html>
 <head>
   <title>Cart</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="style.css">
   <script src="data.js"></script>
   <script src="script.js"></script>
 </head>
+
 <body onload="loadCartPage()">
 
-<header>
-  <a href="index.html">←</a>
-  <div class="brand">Cart</div>
-</header>
+<div class="topbar">
+  <button class="icon-btn" onclick="goBack()">←</button>
+  <div class="brand-name">Cart</div>
+</div>
 
-<div class="section" id="cart-items"></div>
+<div class="product-page" id="cart-items"></div>
 
-<div class="section">
+<div class="product-page">
   <p>Subtotal: <span id="subtotal"></span></p>
   <p>Shipping: ₹100</p>
   <h3>Total: <span id="total"></span></h3>
