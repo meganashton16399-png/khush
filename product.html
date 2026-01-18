@@ -1,1 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Product</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="data.js"></script>
+  <script src="script.js"></script>
+</head>
+<body onload="loadProductPage()">
 
+<header>
+  <a href="index.html">←</a>
+  <a href="cart.html">🛒 <span id="cart-count">0</span></a>
+</header>
+
+<div class="product-page">
+  <img id="p-img">
+</div>
+
+<div class="section">
+  <h2 id="p-name"></h2>
+  <h3 id="p-price"></h3>
+  <button id="add-cart-btn">Add to Cart</button>
+</div>
+
+<div class="section">
+  <h4>Description</h4>
+  <p id="p-desc"></p>
+</div>
+
+<div class="section">
+  <h4>Wash Care</h4>
+  <ul id="wash-care"></ul>
+</div>
+
+</body>
+</html>
